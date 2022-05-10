@@ -5,8 +5,8 @@
 
 REPO_NAME=bo-container
 
-if aws ecr describe-repositories --repository-names "$REPO_NAME" > /dev/null 2>&1 ; then
-  echo "Repositoy \"$REPO_NAME\" already exists."
+if aws ecr describe-repositories --repository-names "$REPO_NAME" >/dev/null 2>&1; then
+  echo "Repositoy \"$REPO_NAME\" already exists. Now creating \"$REPO_NAME\"..."
 else
   echo "Repositoy \"$REPO_NAME\" does not exist."
   aws ecr create-repository \

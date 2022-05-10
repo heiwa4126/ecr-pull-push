@@ -1,8 +1,12 @@
-#!/bin/sh
+#!/bin/sh -u
 
 . ./account_dst.sh
+. ./config.sh
+ACCOUNT=$(aws sts get-caller-identity --query "Account" --output text)
+DST_REGISTRY="$ACCOUNT.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
+DST_REPO="$DST_REGISTRY/$REPO_NAME:latest"
 
-aws ecr get-login-password --region ap-northeast-1 \
-  | docker login --username AWS --password-stdin 577370749203.dkr.ecr.ap-northeast-1.amazonaws.com
+aws ecr get-login-password |
+  docker login --username AWS --password-stdin "$DST_REGISTRY"
 
-docker push 577370749203.dkr.ecr.ap-northeast-1.amazonaws.com/bo-container:latest
+docker push "$DST_REPO"
