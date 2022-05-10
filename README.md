@@ -6,6 +6,10 @@ ECRから別のECRにイメージをコピーするスクリプト。
 - AWS CLI
 - ソースと宛先のAWSアカウントのAPIキー
 
+AWS CLIとDockerのインストールに関しては
+[AWS CLI での Amazon ECR の使用 - Amazon ECR](https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/getting-started-cli.html#getting-started-cli-prereqs)
+を参照。
+
 
 # 設定ファイル
 
